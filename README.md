@@ -13,13 +13,18 @@ Signature.js needs 2 things:
 Usage
 -----
 To initialize or clear (options being optional):
-
+```javascript
 $('.el').signature({... options ...});
+```
 
 To get the image out, just do the same, but send a string of the type you'd image type you'd like (png or jpeg):
-
+```javascript
 var dataurl = $('.el').signature('png');
-
+```
+Which you can then use to embed in a the page by doing:
+```javascript
+$('<img>').attr('src' , dataurl);
+```
 
 Initialization Options (w/ defaults)
 ----------------------
