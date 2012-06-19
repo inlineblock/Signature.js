@@ -12,7 +12,7 @@ Signature.js needs 2 things:
 
 License
 -------
-MIT License(LICENSE)
+[MIT License](LICENSE)
 
 Contribute
 ----------
