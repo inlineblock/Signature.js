@@ -12,7 +12,7 @@ Signature.js needs 2 things:
 
 License
 -------
-[MIT License](Signature.js/blob/master/README.md)
+[MIT License](Signature.js/blob/master/LICENSE)
 
 Contribute
 ----------
