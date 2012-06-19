@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Signature</title>
+		<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-touch-fullscreen" content="yes" />
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<script src="http://modernizr.com/downloads/modernizr-latest.js"></script>
+		<script src="signature.js"></script>
+	</head>
+	<body>
+		<h1>Signature.js</h1>
+		<div class="siggy"></div>
+		<button>Create &lt;img&gt;</button>
+		<div class="images"></div>
+		<script>
+			$(function() { 
+				$('.siggy').signature({strokeWidth: 2 , backgroundColor: '#FCC' , strokeColor: '#F00' , width: 600});
+				$('button').click(function() {
+					var type = prompt('What image type? ("jpeg" or "png")') || 'jpeg',
+						data = $('.siggy').signature(type);
+					$('.images').html('<img src="' + data + '">');
+				});
+			});
+		</script>
+	</body>
+</html>
+
