@@ -21,7 +21,9 @@
 				$('button').click(function() {
 					var type = prompt('What image type? ("jpeg" or "png")') || 'jpeg',
 						data = $('.siggy').signature(type);
-					$('.images').html('<img src="' + data + '">');
+					if (type != 'clear') {
+						$('.images').html('<img src="' + data + '">');
+					}
 				});
 			});
 		</script>

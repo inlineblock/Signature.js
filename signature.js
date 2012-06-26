@@ -1,11 +1,31 @@
 (function ($) {
 	$.fn.signature = function(options) {
 		if (typeof options == 'string') {
-			var sig;
-			this.each(function() {
-				sig = $(this).find('canvas')[0].toDataURL('image/' + options);
-			});
-			return sig;
+			switch(options) {
+				case 'clear':
+					var canvas = $(this).find('canvas'),
+						options = canvas.data('options');
+					if (canvas && canvas[0] && options) {
+						var context = canvas[0].getContext('2d');
+						context.fillStyle = options.backgroundColor;
+						context.fillRect(0 , 0 , options.width , options.height); // init bg
+					}
+					return this;
+				break;
+
+				case 'jpg':
+					options = 'jpeg';
+				case 'png':
+				case 'jpeg':
+				default:
+					var sig;
+					this.each(function() {
+						sig = $(this).find('canvas')[0].toDataURL('image/' + options);
+					});
+					return sig;
+				break;
+
+			}
 		} else {
 			
 			options = $.extend({
@@ -13,7 +33,8 @@
 				strokeWidth: 2,
 				backgroundColor: '#FFF',
 				width: 500,
-				height: 250
+				height: 250,
+				mouseOutTimeout: 1000
 			}, options || {});
 
 			this.each(function() {
@@ -50,6 +71,7 @@
 					},
 					previous,
 					cancelTimeout;
+				canvas.data('options' , options);
 				canvas.attr({
 					width: options.width,
 					height: options.height
@@ -63,7 +85,7 @@
 						.on('touchmove' , moveDraw);
 
 				} else {
-					canvas.mouseout(function() { cancelTimeout = window.setTimeout(function() { canDraw = false; } , 500); })
+					canvas.mouseout(function() { cancelTimeout = window.setTimeout(function() { canDraw = false; } , options.mouseOutTimeout); })
 						.mousedown(startDraw)
 						.mouseup(endDraw)
 						.mousemove(moveDraw);
