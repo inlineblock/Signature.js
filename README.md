@@ -40,7 +40,7 @@ Initialization Options (w/ defaults)
 
 License
 -------
-[MIT License](Signature.js/blob/master/LICENSE)
+[MIT License](LICENSE)
 
 Contribute
 ----------
